@@ -92,21 +92,23 @@ class Mapy(QWidget):
         datas = pd.read_json(self.save_file)
         print("Modification du fichier data.geojson effectuée !")
 
-        # self.send_data_geoson_to_API_SB()
+        self.send_data_geoson_to_API_SB()
 
         #my_list = []
         # for gpsPoint in datas['features'] :
         #    print("point", gpsPoint["geometry"]["coordinates"] )
         #    my_list.append(gpsPoint["geometry"]["coordinates"] )
 
-    def send_data_geoson_to_API_SB():
-        # Open the GeoJSON file in read mode
+    def send_data_geoson_to_API_SB(self):
+        # On ouvre le fichier GeoJSON en lecture seule
         with open('./data.geojson', 'r') as f:
-            # Load the GeoJSON file contents into a Python variable
+            # On charge le contenu du fichier GeoJSON dans une variable Python
             geojson_data = json.load(f)
 
-        # Extract the coordinates from the GeoJSON file
+        # Extraction des coordonnées depuis le fichier GeoJSON
         coordinates = geojson_data['features'][0]['geometry']['coordinates'][0]
+        print(coordinates)
+        # On retire la dernière coordonnée qui correspond à la même que la première
         coordinates.pop()
         print(coordinates)
 
