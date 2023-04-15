@@ -113,8 +113,8 @@ class Mapy(QWidget):
         print(coordinates)
 
         # à décommenter après avoir vérifier que le tableau de coordonnées est bien récupéré du fichier
-        """ url = 'localhost:8080/smart-contrat-baux-ruraux'
-        payload = {'coordinates': coordinates}
+        url = 'http://localhost:8080/smartcontract'
+        payload = {'coordonnees': coordinates}
         response = requests.post(url, json=payload)
         if response.status_code == 200:
             print('Coordinates sent successfully!')
@@ -122,7 +122,7 @@ class Mapy(QWidget):
         else:
             print('Error sending coordinates')
             print("La requête a échouée avec le code de retour {} et le message {}.".format(
-                response.status_code, response.content)) """
+                response.status_code, response.content))
 
 
 if __name__ == "__main__":
