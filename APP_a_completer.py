@@ -108,12 +108,13 @@ class Mapy(QWidget):
         # Extraction des coordonnées depuis le fichier GeoJSON
         coordinates = geojson_data['features'][0]['geometry']['coordinates'][0]
         print(coordinates)
-        # On retire la dernière coordonnée qui correspond à la même que la première
-        coordinates.pop()
+        # On retire la dernière coordonnée si elle correspond à la même que la première
+        if coordinates[0] == coordinates[-1]:
+            coordinates.pop()
         print(coordinates)
 
         # à décommenter après avoir vérifier que le tableau de coordonnées est bien récupéré du fichier
-        url = 'http://localhost:8080/smartcontract'
+        url = 'http://localhost:8080/bailrural'
         payload = {'coordonnees': coordinates}
         response = requests.post(url, json=payload)
         if response.status_code == 200:
